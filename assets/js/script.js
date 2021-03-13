@@ -25,5 +25,10 @@ var interval = setInterval(function() {
 }, 100);
 
 function initPage() {
-    
+    console.log("Current Time " + hour);
+    var startnine = JSON.parse(localStorage.getItem("09:00 am"));
+    hourNine.val(startnine);
+
+
+
 }
