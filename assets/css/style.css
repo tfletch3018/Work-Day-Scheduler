@@ -29,6 +29,14 @@ body {
     text-align: center;
     border-radius: 15px;
   }
+
+  .inside-text {
+    border: none;
+  }
+
+  .add-info {
+    border: none;
+  }
   
   .row {
     white-space: pre-wrap;
