@@ -1,5 +1,7 @@
+//moment
 var currentDay = moment().format('dddd') + " " + moment().format("D MMMM YYYY");
 var currentTime = moment().format('hh:mm:ss a');
+//time variables
 var hourNine = $("#9am");
 var hourTen = $("#10am");
 var hourEleven = $("#11am");
@@ -13,8 +15,11 @@ var hourEighteen = $("#18pm");
 var hourNineteen = $("#19pm");
 
 var hour = moment().hour();
-var userInside;
+var totals;
 var hourSpan;
+
+
+
 
 var interval = setInterval(function() {
     var timeNow = moment();
@@ -25,10 +30,71 @@ var interval = setInterval(function() {
 }, 100);
 
 function initPage() {
+
     console.log("Current Time " + hour);
     var startnine = JSON.parse(localStorage.getItem("09:00 am"));
     hourNine.val(startnine);
 
+    var startten = JSON.parse(localStorage.getItem("10:00 am"));
+    hourTen.val(startten);
 
+    var starteleven = JSON.parse(localStorage.getItem("11:00 am"));
+    hourEleven.val(starteleven);
 
+    var starttwelve = JSON.parse(localStorage.getItem("12:00 pm"));
+    hourTwelve.val(starttwelve);
+
+    var startthirteen = JSON.parse(localStorage.getItem("01:00 pm"));
+    hourThirteen.val(startthirteen);
+
+    var startfourteen = JSON.parse(localStorage.getItem("02:00 pm"));
+    hourFourteen.val(startfourteen);
+
+    var startfifteen = JSON.parse(localStorage.getItem("03:00 pm"));
+    hourFifteen.val(startfifteen);
+
+    var startsixteen = JSON.parse(localStorage.getItem("04:00 pm"));
+    hourSixteen.val(startsixteen);
+
+    var startseventeen = JSON.parse(localStorage.getItem("05:00 pm"));
+    hourSeventeen.val(startseventeen);
+
+    var starteightteen = JSON.parse(localStorage.getItem("06:00 pm"));
+    hourEighteen.val(starteightteen);
+
+    var startnineteen = JSON.parse(localStorage.getItem("07:00 pm"));
+    hourNineteen.val(startnineteen);
 }
+
+function background() {
+
+    $(".add-info").each(function () {
+        var checkTime = parseInt($(this).attr("id"));
+        hour = parseInt(hour);
+        console.log(checkTime);
+        console.log(hour);
+
+        if (hour > checkTime) {
+            $(this).addClass("past");    
+        } else if (hour < checkTime) {
+            $(this).addClass("future");
+        } else {
+            $(this).addClass("present");
+        }
+    });
+}
+
+$(document).ready(function () {
+    initPage()
+    background()
+
+
+    $(".saveBtn").on("click", function() {
+        totals = $(this).siblings(".add-info").val().trim();
+        console.log(totals);
+        hourSpan = $(this).siblings(".inside-prepend").text().trim();
+        console.log(hourSpan);
+        localStorage.setItem(hourSpan, JSON.stringify(totals)); 
+    })
+
+})
