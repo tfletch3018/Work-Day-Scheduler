@@ -14,24 +14,24 @@ var hourSeventeen = $("#17pm");
 var hourEighteen = $("#18pm");
 var hourNineteen = $("#19pm");
 
-var hour = moment().hour();
+var hour = moment().hours();
 var totals;
 var hourSpan;
 
 
 
 
-var interval = setInterval(function() {
+var interval = setInterval(function () {
     var timeNow = moment();
     $('#currentDay').html(timeNow.format('YYYY MMMM DD') + ' '
-    + timeNow.format('dddd')
-    .substring(0, 3).toUpperCase());
+        + timeNow.format('dddd')
+            .substring(0, 3).toUpperCase());
     $('#currentDay').html(currentDay + " " + timeNow.format('hh:mm:ss A'));
 }, 100);
 
 function initPage() {
 
-    console.log("Current Time " + hour);
+    console.log("Current Hour " + hour);
     var startnine = JSON.parse(localStorage.getItem("09:00 am"));
     hourNine.val(startnine);
 
@@ -75,7 +75,7 @@ function background() {
         console.log(hour);
 
         if (hour > checkTime) {
-            $(this).addClass("past");    
+            $(this).addClass("past");
         } else if (hour < checkTime) {
             $(this).addClass("future");
         } else {
@@ -89,12 +89,12 @@ $(document).ready(function () {
     background()
 
 
-    $(".saveBtn").on("click", function() {
+    $(".saveBtn").on("click", function () {
         totals = $(this).siblings(".add-info").val().trim();
         console.log(totals);
         hourSpan = $(this).siblings(".inside-prepend").text().trim();
         console.log(hourSpan);
-        localStorage.setItem(hourSpan, JSON.stringify(totals)); 
+        localStorage.setItem(hourSpan, JSON.stringify(totals));
     })
 
 })
