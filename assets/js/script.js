@@ -68,7 +68,7 @@ function initPage() {
 
 function background() {
 
-    $(".add-info").each(function () {
+    $(".form-control").each(function () {
         var checkTime = parseInt($(this).attr("id"));
         hour = parseInt(hour);
         console.log(checkTime);
@@ -90,9 +90,9 @@ $(document).ready(function () {
 
 
     $(".saveBtn").on("click", function () {
-        totals = $(this).siblings(".add-info").val().trim();
+        totals = $(this).siblings(".form-control").val().trim();
         console.log(totals);
-        hourSpan = $(this).siblings(".inside-prepend").text().trim();
+        hourSpan = $(this).siblings(".input-group-window").text().trim();
         console.log(hourSpan);
         localStorage.setItem(hourSpan, JSON.stringify(totals));
     })
