@@ -1,4 +1,4 @@
-//moment
+//moment commands and variables
 var currentDay = moment().format('dddd') + " " + moment().format("D MMMM YYYY");
 var currentTime = moment().format('hh:mm:ss a');
 //time variables
@@ -13,22 +13,11 @@ var hourSixteen = $("#16pm");
 var hourSeventeen = $("#17pm");
 var hourEighteen = $("#18pm");
 var hourNineteen = $("#19pm");
-
 var hour = moment().hours();
 var totals;
 var hourSpan;
 
-
-
-
-var interval = setInterval(function () {
-    var timeNow = moment();
-    $('#currentDay').html(timeNow.format('YYYY MMMM DD') + ' '
-        + timeNow.format('dddd')
-            .substring(0, 3).toUpperCase());
-    $('#currentDay').html(currentDay + " " + timeNow.format('hh:mm:ss A'));
-}, 100);
-
+//targets each item intended for local storage
 function initPage() {
 
     console.log("Current Hour " + hour);
@@ -66,8 +55,17 @@ function initPage() {
     hourNineteen.val(startnineteen);
 }
 
-function background() {
+//Function to display running clock
+var interval = setInterval(function () {
+    var timeNow = moment();
+    $('#currentDay').html(timeNow.format('YYYY MMMM DD') + ' '
+        + timeNow.format('dddd')
+            .substring(0, 3).toUpperCase());
+    $('#currentDay').html(currentDay + " " + timeNow.format('hh:mm:ss A'));
+}, 100);
 
+
+function style() {
     $(".form-control").each(function () {
         var checkTime = parseInt($(this).attr("id"));
         hour = parseInt(hour);
@@ -86,8 +84,7 @@ function background() {
 
 $(document).ready(function () {
     initPage()
-    background()
-
+    style()
 
     $(".saveBtn").on("click", function () {
         totals = $(this).siblings(".form-control").val().trim();
@@ -96,5 +93,4 @@ $(document).ready(function () {
         console.log(hourSpan);
         localStorage.setItem(hourSpan, JSON.stringify(totals));
     })
-
 })
