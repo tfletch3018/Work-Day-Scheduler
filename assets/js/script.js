@@ -64,7 +64,7 @@ var interval = setInterval(function () {
     $('#currentDay').html(currentDay + " " + timeNow.format('hh:mm:ss A'));
 }, 100);
 
-
+// Links to CSS styling
 function style() {
     $(".form-control").each(function () {
         var checkTime = parseInt($(this).attr("id"));
@@ -82,6 +82,7 @@ function style() {
     });
 }
 
+//SaveBtn links to localStorage 
 $(document).ready(function () {
     initPage()
     style()
