@@ -92,7 +92,7 @@ $(document).ready(function () {
     $(".saveBtn").on("click", function () {
         totals = $(this).siblings(".form-control").val().trim();
         console.log(totals);
-        hourSpan = $(this).siblings(".input-group-window").text().trim();
+        hourSpan = $(this).siblings(".input-group-prepend").text().trim();
         console.log(hourSpan);
         localStorage.setItem(hourSpan, JSON.stringify(totals));
     })
