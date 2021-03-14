@@ -46,4 +46,5 @@ You are required to submit the following for review:
 * The URL of the GitHub repository, with a unique name and a README describing the project
 
 - - -
-
+https://tfletch3018.github.io/Work-Day-Scheduler/
+https://github.com/tfletch3018/Work-Day-Scheduler
